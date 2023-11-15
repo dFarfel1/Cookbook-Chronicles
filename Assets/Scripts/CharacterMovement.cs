@@ -25,6 +25,8 @@ public class CharacterMovement : MonoBehaviour
     private bool lefting = false;
     private bool righting = false;
 
+    private GameObject[] inventory;
+
 
 
     void Start()
