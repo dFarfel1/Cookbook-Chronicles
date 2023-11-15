@@ -8,10 +8,9 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
 
     private float lookDir;
-    private float mouseSensitivity = 3.0f;
+    public float mouseSensitivity = 3.0f;
     public GameObject player;
     public Animator playerAnimator;
-    public LayerMask layers;
     private int speed = 8;
     private float jump_power = 10.0f;
     private float gravity = 20.0f;
