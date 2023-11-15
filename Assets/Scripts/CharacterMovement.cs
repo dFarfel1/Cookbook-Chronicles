@@ -30,7 +30,7 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        player.transform.position = new Vector3 (1,1,1);
+        player.transform.position = new Vector3 (900,1,50);
         player.transform.rotation = new Quaternion (0,0,0,0);
 
     }
