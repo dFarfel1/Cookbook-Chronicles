@@ -27,8 +27,8 @@ public class CameraControl : MonoBehaviour
             cameraHeight = playerHeight + 15;
         }
 
-        if (cameraHeight < terrainHeight + 0.5f) {//keep the camera above ground
-            cameraHeight = terrainHeight + 0.5f;
+        if (cameraHeight < terrainHeight + 1.0f) {//keep the camera above ground
+            cameraHeight = terrainHeight + 1.0f;
         }
         
         camera.transform.position = new Vector3(camera.transform.position.x, cameraHeight, camera.transform.position.z);
