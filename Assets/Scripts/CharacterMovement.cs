@@ -8,7 +8,7 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
 
     private float lookDir;
-    private float mouseSensitivity = 3.0f;
+    public float mouseSensitivity = 3.0f;
     public GameObject player;
     public Animator playerAnimator;
     private int speed = 8;
@@ -30,15 +30,22 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        player.transform.position = new Vector3 (1,1,1);
+        // player.transform.position = new Vector3 (900,1,50);
         player.transform.rotation = new Quaternion (0,0,0,0);
 
     }
 
     public bool CheckGround()
+
+    
     {
-        float _distanceToTheGround = GetComponent<Collider>().bounds.extents.y;
-        return Physics.Raycast(player.transform.position, Vector3.down, _distanceToTheGround - 0.62f);
+        float terrainHeight = Terrain.activeTerrain.SampleHeight(player.transform.position);//user terrain map to check height
+        if (player.transform.position.y > terrainHeight) { //in air
+            return false;
+        } else { //on ground or below, so go to top of terrain.
+            player.transform.position = new Vector3 (player.transform.position.x, terrainHeight, player.transform.position.z ); 
+            return true;
+        }
     }
 
     // Update is called once per frame
@@ -83,8 +90,8 @@ public class CharacterMovement : MonoBehaviour
         }
 
         //jumping
-        if (Input.GetKeyDown("space")) {
-            if (onGround) {
+        if (Input.GetKeyDown("space")) {//if player is only slightly off the ground from walking downhill still jump
+            if (onGround || player.transform.position.y < Terrain.activeTerrain.SampleHeight(player.transform.position) + 0.2) { 
                 jumping = true;
                 vertical_speed = jump_power;
                 onGround = false;
@@ -95,10 +102,6 @@ public class CharacterMovement : MonoBehaviour
         if (!onGround) {
             player.transform.position += player.transform.up * Time.deltaTime * vertical_speed;
             vertical_speed -= gravity * Time.deltaTime; //apply gravity to vertical speed when in the air
-            righting = false;
-            lefting = false;
-            forwarding = false;
-            backing = false;
         } else {
             if (vertical_speed != 0.0f) {
                 landing = true;
