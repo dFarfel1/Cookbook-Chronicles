@@ -43,12 +43,9 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if (selectedIndex >= 0)
+        if (Input.GetKey("l"))
         {
-            if (Input.GetKey("l"))
-            {
-                
-            }
+            drop();
         }
     }
 
@@ -68,6 +65,39 @@ public class Inventory : MonoBehaviour
         {
 			itemsDisplay[selectedIndex - 1].GetComponent<Image>().color = Color.white;
 			selectedIndex = -1;
+        }
+    }
+
+    void OnEnterItemTrigger(GameObject item)
+    {
+        if (Input.GetKey("p"))
+        {
+            pickup(item);
+        }
+    }
+
+    private void drop()
+    {
+        if (selectedIndex >= 0 && items[selectedIndex - 1] != null)
+        {
+			items[selectedIndex - 1].transform.position = gameObject.transform.position;
+			items[selectedIndex - 1].SetActive(true);
+			itemsDisplay[selectedIndex - 1].GetComponent<Text>().text = "none";
+			items[selectedIndex - 1] = null;
+			select(0);
+		}
+	}
+
+    private void pickup(GameObject item)
+    {
+        for (int i = 0; i < numItems; i++)
+        {
+            if (items[i] == null)
+            {
+                items[i] = item;
+				itemsDisplay[i].GetComponent<Text>().text = item.name;
+                item.SetActive(false);
+			}
         }
     }
 
