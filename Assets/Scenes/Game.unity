@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1330,6 +1330,7 @@ MonoBehaviour:
   m_TextureSize: 256
   m_ClipPlaneOffset: 0.07
   m_ReflectLayers:
+    serializedVersion: 2
     m_Bits: 4294967295
   ignoreOcclusionCulling: 1
 --- !u!23 &1114749078
@@ -1895,6 +1896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220063e6846d0e34f8116c4b26981ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSensitivity: 3
   player: {fileID: 1621541437}
   playerAnimator: {fileID: 1621541439}
 --- !u!1 &1621790570

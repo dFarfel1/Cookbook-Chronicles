@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
     private int speed = 8;
     private float jump_power = 10.0f;
     private float gravity = 20.0f;
+    private float maxWallClimbHeight = 0.03f;
 
     private float vertical_speed = 0.0f;
     private bool onGround = true;
@@ -40,7 +41,7 @@ public class CharacterMovement : MonoBehaviour
     
     {
         float terrainHeight = Terrain.activeTerrain.SampleHeight(player.transform.position);//user terrain map to check height
-        if (player.transform.position.y > terrainHeight) { //in air
+        if (player.transform.position.y > terrainHeight + 0.02) { //in air but allow for a little leeway
             return false;
         } else { //on ground or below, so go to top of terrain.
             player.transform.position = new Vector3 (player.transform.position.x, terrainHeight, player.transform.position.z ); 
@@ -57,6 +58,7 @@ public class CharacterMovement : MonoBehaviour
 
         //check if landed
         onGround = CheckGround();
+        Debug.Log(onGround);
         
         //used for animation control
         jumping = false;
@@ -69,29 +71,45 @@ public class CharacterMovement : MonoBehaviour
 
         //movement
         if (Input.GetKey("w")) {
-            forwarding = true;
-            
-            player.transform.position += player.transform.forward * Time.deltaTime * speed;
+            //prevent vertical wall climbs
+            Vector3 nextPosition = player.transform.position +  player.transform.forward * Time.deltaTime * speed;
+            float nextTerrainHeight = Terrain.activeTerrain.SampleHeight(nextPosition);
+            if (nextTerrainHeight < player.transform.position.y + maxWallClimbHeight) {
+                forwarding = true;
+                player.transform.position = nextPosition;
+            }
         }
         else if (Input.GetKey("s")) {
-            backing = true;
-            
-            player.transform.position -= player.transform.forward * Time.deltaTime * speed;
+
+            Vector3 nextPosition = player.transform.position - player.transform.forward * Time.deltaTime * speed;
+            float nextTerrainHeight = Terrain.activeTerrain.SampleHeight(nextPosition);
+            if (nextTerrainHeight < player.transform.position.y + maxWallClimbHeight) {
+                backing = true;
+                player.transform.position = nextPosition;
+            }
         }
         else if (Input.GetKey("a")) {
-            lefting = true;
-            
-            player.transform.position -= player.transform.right * Time.deltaTime * speed;
+    
+            Vector3 nextPosition = player.transform.position - player.transform.right * Time.deltaTime * speed;
+            float nextTerrainHeight = Terrain.activeTerrain.SampleHeight(nextPosition);
+            if (nextTerrainHeight < player.transform.position.y + maxWallClimbHeight) {
+                lefting = true;
+                player.transform.position = nextPosition;
+            }
         }
         else if (Input.GetKey("d")) {
-            righting = true;
             
-            player.transform.position += player.transform.right * Time.deltaTime * speed;
+            Vector3 nextPosition = player.transform.position + player.transform.right * Time.deltaTime * speed;
+            float nextTerrainHeight = Terrain.activeTerrain.SampleHeight(nextPosition);
+            if (nextTerrainHeight < player.transform.position.y + maxWallClimbHeight) {
+                righting = true;
+                player.transform.position = nextPosition;
+            }
         }
 
         //jumping
         if (Input.GetKeyDown("space")) {//if player is only slightly off the ground from walking downhill still jump
-            if (onGround || player.transform.position.y < Terrain.activeTerrain.SampleHeight(player.transform.position) + 0.2) { 
+            if (onGround) { 
                 jumping = true;
                 vertical_speed = jump_power;
                 onGround = false;
@@ -116,6 +134,7 @@ public class CharacterMovement : MonoBehaviour
         playerAnimator.SetBool("land", landing);
         playerAnimator.SetBool("left", lefting);
         playerAnimator.SetBool("right", righting);
+        playerAnimator.SetBool("air", !onGround);
 
     }
 }
