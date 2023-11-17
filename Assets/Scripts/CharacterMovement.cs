@@ -11,6 +11,8 @@ public class CharacterMovement : MonoBehaviour
     public float mouseSensitivity = 3.0f;
     public GameObject player;
     public Animator playerAnimator;
+    public AudioSource walkSound;
+    public AudioSource jumpSound;
     private int speed = 8;
     private float jump_power = 10.0f;
     private float gravity = 20.0f;
@@ -25,6 +27,7 @@ public class CharacterMovement : MonoBehaviour
     private bool landing = false;
     private bool lefting = false;
     private bool righting = false;
+    private bool playingWalk = false;
 
 
 
@@ -33,6 +36,7 @@ public class CharacterMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         // player.transform.position = new Vector3 (900,1,50);
         player.transform.rotation = new Quaternion (0,0,0,0);
+
 
     }
 
@@ -58,7 +62,10 @@ public class CharacterMovement : MonoBehaviour
 
         //check if landed
         onGround = CheckGround();
-        Debug.Log(onGround);
+
+        //Disable sounds by default, enable if appropriate
+
+        playingWalk = false;
         
         //used for animation control
         jumping = false;
@@ -113,6 +120,7 @@ public class CharacterMovement : MonoBehaviour
                 jumping = true;
                 vertical_speed = jump_power;
                 onGround = false;
+                jumpSound.Play();
             }
         }
 
@@ -121,12 +129,14 @@ public class CharacterMovement : MonoBehaviour
             player.transform.position += player.transform.up * Time.deltaTime * vertical_speed;
             vertical_speed -= gravity * Time.deltaTime; //apply gravity to vertical speed when in the air
         } else {
+            playingWalk = forwarding || backing || lefting || righting; //play footstep sound if moving on the ground
             if (vertical_speed != 0.0f) {
                 landing = true;
                 vertical_speed = 0.0f;
             }
         }
 
+        walkSound.enabled = playingWalk;
         //set animation stuff
         playerAnimator.SetBool("jump", jumping);
         playerAnimator.SetBool("fwd", forwarding);
