@@ -5,7 +5,8 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
 	public int count;
-	public static int max = 50;
+	public int max = 50;
+	public float maxGrowth;
 
 	public GameObject prefab;
 	public float radius;
@@ -16,6 +17,7 @@ public class NewBehaviourScript : MonoBehaviour
 		count = 0;
 		radius = 50.0f;
 		growthFactor = 1.05f;
+		maxGrowth = 2.5f;
 
 		StartCoroutine("spawn");
 		StartCoroutine("grow");
@@ -51,7 +53,11 @@ public class NewBehaviourScript : MonoBehaviour
 		{
 			foreach(Transform item in transform)
 			{
-				item.localScale *= growthFactor;
+				if (item.localScale.x < maxGrowth)
+				{
+					item.localScale *= growthFactor;
+				}
+				
 			}
 			yield return new WaitForSeconds(6.0f);
 		}
