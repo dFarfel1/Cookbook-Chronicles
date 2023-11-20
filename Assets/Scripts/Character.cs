@@ -10,26 +10,30 @@ public class Character : MonoBehaviour
     {
         inventory = GameObject.Find("Inventory");
 
-        inventory.SetActive(false);
-        inventoryOpen = false;
+		inventory.GetComponent<Canvas>().enabled = false;
+		inventoryOpen = false;
 
     }
 
-    
     void Update()
     {
         if (Input.GetKeyDown("b"))
         {
             if (inventoryOpen)
             {
-                inventory.SetActive(false);
+				inventory.GetComponent<Canvas>().enabled = false;
 				inventoryOpen = false;
 			}
             else
             {
-                inventory.SetActive(true);
-                inventoryOpen = true;
+				inventory.GetComponent<Canvas>().enabled = true;
+				inventoryOpen = true;
             }
         }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
     }
 }

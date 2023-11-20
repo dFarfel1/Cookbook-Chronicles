@@ -62,6 +62,13 @@ public class Inventory : MonoBehaviour
 		{
 			drop();
 		}
+
+		//Temporary adding items
+		if (Input.GetKeyDown("p"))
+		{
+			GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+			pickup(sphere);
+		}
 	}
 
 	private void select()
