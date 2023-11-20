@@ -17,19 +17,7 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("b"))
-        {
-            if (inventoryOpen)
-            {
-				inventory.GetComponent<Canvas>().enabled = false;
-				inventoryOpen = false;
-			}
-            else
-            {
-				inventory.GetComponent<Canvas>().enabled = true;
-				inventoryOpen = true;
-            }
-        }
+        
     }
 
     void OnCollisionEnter(Collision collision)
