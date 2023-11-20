@@ -96,9 +96,9 @@ public class Inventory : MonoBehaviour
 	{
 		if (selectedIndex >= 0 && items[selectedIndex] != null)
 		{
-			items[selectedIndex].transform.position = gameObject.transform.position;
 			items[selectedIndex].SetActive(true);
-			itemsDisplay[selectedIndex].GetComponent<Text>().text = "none";
+			items[selectedIndex].transform.position = GameObject.Find("ModularCharacterPBR").transform.position;
+			itemsDisplay[selectedIndex].GetComponentInChildren<Text>().text = "none";
 			items[selectedIndex] = null;
 		}
 	}
@@ -110,8 +110,9 @@ public class Inventory : MonoBehaviour
 			if (items[i] == null)
 			{
 				items[i] = item;
-				itemsDisplay[i].GetComponent<Text>().text = item.name;
+				itemsDisplay[i].GetComponentInChildren<Text>().text = item.name;
 				item.SetActive(false);
+				break;
 			}
 		}
 	}
