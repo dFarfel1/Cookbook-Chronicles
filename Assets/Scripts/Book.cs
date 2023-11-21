@@ -38,18 +38,15 @@ public class book : MonoBehaviour
 
     public void ForwardButtonActions()
     {
-        if (backButton.activeInHierarchy == false)
-        {
+        if (backButton.activeInHierarchy == false){
             backButton.SetActive(true);
         }
-        if (index == pages.Count - 1)
-        {
+        if (index == pages.Count - 1){
             forwardButton.SetActive(false);
         }
     }
 
-    public void RotateBack()
-    {
+    public void RotateBack(){
         if (rotate == true) { return; }
         float angle = 0;
         pages[index].SetAsLastSibling();
@@ -57,8 +54,7 @@ public class book : MonoBehaviour
         StartCoroutine(Rotate(angle, false));
     }
 
-    public void BackButtonActions()
-    {
+    public void BackButtonActions(){
         if (forwardButton.activeInHierarchy == false)
         {
             forwardButton.SetActive(true);
@@ -69,11 +65,9 @@ public class book : MonoBehaviour
         }
     }
 
-    IEnumerator Rotate(float angle, bool forward)
-    {
+    IEnumerator Rotate(float angle, bool forward){
         float value = 0f;
-        while (true)
-        {
+        while (true){
             rotate = true;
             Quaternion targetRotation = Quaternion.Euler(0, angle, 0);
             value += Time.deltaTime * pageSpeed;
