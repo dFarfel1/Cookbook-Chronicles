@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - CharacterSoundSphere
+  - pickup
+  - CarrotGenerator
   layers:
   - Default
   - TransparentFX
@@ -37,7 +39,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - invisible
   m_SortingLayers:
   - name: Default
     uniqueID: 0
