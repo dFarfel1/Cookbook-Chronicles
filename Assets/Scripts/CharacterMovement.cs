@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour
     public Animator playerAnimator;
     public AudioSource walkSound;
     public AudioSource jumpSound;
+    public GameObject inventory;
     private int speed = 8;
     private float jump_power = 10.0f;
     private float gravity = 20.0f;
@@ -56,6 +57,11 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        bool doNothing = inventory.GetComponent<Inventory>().isInventoryOpen();
+        if (doNothing) {
+            return;
+        }
         //mouse rotation control
         lookDir += Input.GetAxis("Mouse X") * mouseSensitivity;
         player.transform.localRotation = Quaternion.Euler(0, lookDir, 0);

@@ -15,6 +15,10 @@ public class Inventory : MonoBehaviour
 	public GameObject[] itemsDisplay;
 
 	private bool open;
+
+	public bool isInventoryOpen() {
+		return open;
+	}
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -47,11 +51,13 @@ public class Inventory : MonoBehaviour
 			{
 				GetComponent<Canvas>().enabled = false;
 				open = false;
+				Cursor.lockState = CursorLockMode.Locked;
 			}
 			else
 			{
 				GetComponent<Canvas>().enabled = true;
 				open = true;
+				Cursor.lockState = CursorLockMode.None;
 			}
 		}
 
@@ -60,17 +66,17 @@ public class Inventory : MonoBehaviour
 			selectedCol = (selectedCol - 1 + numCols) % numCols;
 			select();
 		}
-		else if (Input.GetKeyDown(KeyCode.RightArrow))
+		else if (Input.GetKeyDown(KeyCode.RightArrow)&& open)
 		{
 			selectedCol = (selectedCol + 1) % numCols;
 			select();
 		}
-		else if (Input.GetKeyDown(KeyCode.UpArrow))
+		else if (Input.GetKeyDown(KeyCode.UpArrow) && open)
 		{
 			selectedRow = (selectedRow - 1 + numRows) % numRows;
 			select();
 		}
-		else if (Input.GetKeyDown(KeyCode.DownArrow))
+		else if (Input.GetKeyDown(KeyCode.DownArrow) && open)
 		{
 			selectedRow = (selectedRow + 1) % numRows;
 			select();
@@ -83,11 +89,11 @@ public class Inventory : MonoBehaviour
 
 
 		//Temporary adding items
-		if (Input.GetKeyDown("p"))
-		{
-			GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-			pickup(sphere);
-		}
+		// if (Input.GetKeyDown("p"))
+		// {
+		// 	GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+		// 	pickup(sphere);
+		// }
 	}
 
 	private void select()
@@ -103,12 +109,12 @@ public class Inventory : MonoBehaviour
 		itemsDisplay[selectedIndex].GetComponent<Image>().color = Color.green;
 	}
 
-	void OnEnterItemTrigger(GameObject item)
+	public void pickupItem (GameObject item)
 	{
-		if (Input.GetKey("p"))
+		if (item.tag == "pickup")
 		{
 			pickup(item);
-		}
+ 		}
 	}
 
 	private void drop()
@@ -186,6 +192,7 @@ class inventoryItem
 	{
 		if (count == 1)
 		{
+			Object.Destroy(gameObject);
 			gameObject = null;
 		}
 
@@ -195,7 +202,9 @@ class inventoryItem
 
 	public void generateClone(Vector3 position)
 	{
-		GameObject.Instantiate(gameObject, position, Quaternion.identity).SetActive(true);
+		GameObject newClone = GameObject.Instantiate(gameObject, position, Quaternion.identity);
+		newClone.SetActive(true);
+		newClone.name = newClone.name.Replace("(Clone)","").Trim(); //remove clone from the cloned object
 	}
 
 	public string getName()

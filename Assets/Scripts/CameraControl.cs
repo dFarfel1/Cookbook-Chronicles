@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
         public GameObject player;
+        public GameObject inventory;
         private float cameraOffset;
         private float verticalSensitivity = -0.5f;
         private float leftRightRotation;
@@ -19,6 +20,11 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool doNothing = inventory.GetComponent<Inventory>().isInventoryOpen();
+        if (doNothing) {
+            return;
+        }
+        
         cameraTerrainHeightAdjustment = 0.0f;
         cameraOffset += Input.GetAxis("Mouse Y") * verticalSensitivity;
         float terrainHeight = Terrain.activeTerrain.SampleHeight(GetComponent<Camera>().transform.position);

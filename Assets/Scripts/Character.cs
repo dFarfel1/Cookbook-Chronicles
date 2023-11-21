@@ -32,8 +32,10 @@ public class Character : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerStay(Collider collision)
     {
-        Debug.Log(collision.gameObject.name);
+        if (Input.GetKey("p")) {
+            inventory.GetComponent<Inventory>().pickupItem(collision.gameObject);
+        }
     }
 }
