@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CharacterSoundSphere
   - pickup
+  - CarrotGenerator
   layers:
   - Default
   - TransparentFX

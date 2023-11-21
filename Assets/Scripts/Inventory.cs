@@ -118,6 +118,7 @@ public class Inventory : MonoBehaviour
 	{
 		if (item.tag == "pickup")
 		{
+			item.transform.SetParent(null);
 			pickup(item);
  		}
 	}
@@ -160,7 +161,7 @@ public class Inventory : MonoBehaviour
 				if (items[i].getName() == "None")
 				{
 					items[i].addFirstItem(item);
-					itemsDisplay[i].GetComponentInChildren<Text>().text = item.name;
+					itemsDisplay[i].GetComponentInChildren<Text>().text = item.name.Replace("(Clone)","").Trim(); //remove clone any names;
 					itemsDisplay[i].GetComponentsInChildren<Text>()[1].text = "Count: ";
 					item.SetActive(false);
 					break;
