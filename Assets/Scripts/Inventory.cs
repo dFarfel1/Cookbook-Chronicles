@@ -15,6 +15,11 @@ public class Inventory : MonoBehaviour
 	public GameObject[] itemsDisplay;
 
 	private bool open;
+	public void selectItem(int i){
+		selectedCol = i % numCols - 1;
+		selectedRow = i / numCols;
+		select();
+	}
 
 	public bool isInventoryOpen() {
 		return open;
