@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1134,17 +1134,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toon Chicken
       objectReference: {fileID: 0}
+    - target: {fileID: 1311290861401530, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6331,8 +6335,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chickenAnimator: {fileID: 1099093656}
   player: {fileID: 1621541437}
-  rangeCenter: {x: 10, y: 0, z: 10}
-  wanderRadius: 30
+  chickenGenerator: {fileID: 2054772845}
+  strayDistance: 10
 --- !u!1 &1107989683
 GameObject:
   m_ObjectHideFlags: 0
@@ -10405,10 +10409,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   count: 0
   max: 50
-  maxGrowth: 0
+  maxGrowth: 2.5
   prefab: {fileID: 413408506}
-  radius: 0
-  growthFactor: 0
+  radius: 50
+  growthFactor: 1.05
 --- !u!1 &2051546898
 GameObject:
   m_ObjectHideFlags: 0
@@ -10521,11 +10525,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  max: 50
+  max: 10
   maxGrowth: 0
-  prefab: {fileID: 413408506}
-  radius: 0
-  growthFactor: 0
+  prefab: {fileID: 1099093654}
+  radius: 20
+  growthFactor: 1
 --- !u!136 &2054772847
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10608,7 +10612,7 @@ Transform:
   m_GameObject: {fileID: 2054772845}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44.45, y: 10.31, z: 78.21}
+  m_LocalPosition: {x: 89.8, y: 8.448, z: 78.21}
   m_LocalScale: {x: 1, y: 1.2275, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
