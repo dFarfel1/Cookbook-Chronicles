@@ -37,5 +37,12 @@ public class Character : MonoBehaviour
         if (Input.GetKey("p")) {
             inventory.GetComponent<Inventory>().pickupItem(collision.gameObject);
         }
+        if (Input.GetMouseButton(0)) {
+            Debug.Log(collision.gameObject.name);
+            if (collision.gameObject.tag == "hittable") {
+                Debug.Log("hittable");
+                collision.gameObject.GetComponent<IOnHit>().onHit();
+            }
+        }
     }
 }

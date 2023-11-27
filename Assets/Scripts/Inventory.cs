@@ -210,6 +210,8 @@ class inventoryItem
 	{
 		GameObject newClone = GameObject.Instantiate(gameObject, position, Quaternion.identity);
 		newClone.SetActive(true);
+		newClone.transform.position = new Vector3(newClone.transform.position.x, newClone.transform.position.y + 0.25f, newClone.transform.position.z);
+
 		newClone.name = newClone.name.Replace("(Clone)","").Trim(); //remove clone from the cloned object
 	}
 
