@@ -14,11 +14,6 @@ public class NewBehaviourScript : MonoBehaviour
 
 	void Start()
 	{
-		count = 0;
-		radius = 50.0f;
-		growthFactor = 1.05f;
-		maxGrowth = 2.5f;
-
 		StartCoroutine("spawn");
 		StartCoroutine("grow");
 	}
