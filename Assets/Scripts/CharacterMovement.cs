@@ -28,6 +28,7 @@ public class CharacterMovement : MonoBehaviour
     private bool landing = false;
     private bool lefting = false;
     private bool righting = false;
+    private bool swinging = false;
     private bool playingWalk = false;
 
 
@@ -80,6 +81,7 @@ public class CharacterMovement : MonoBehaviour
         landing = false;
         lefting = false;
         righting = false;
+        swinging = false;
 
 
         //movement
@@ -129,6 +131,9 @@ public class CharacterMovement : MonoBehaviour
                 jumpSound.Play();
             }
         }
+        if (Input.GetMouseButtonDown(0)) {
+            swinging = true;
+        }
 
         //check if in air and apply gravity
         if (!onGround) {
@@ -144,6 +149,7 @@ public class CharacterMovement : MonoBehaviour
 
         walkSound.enabled = playingWalk;
         //set animation stuff
+        playerAnimator.SetBool("swing", swinging);
         playerAnimator.SetBool("jump", jumping);
         playerAnimator.SetBool("fwd", forwarding);
         playerAnimator.SetBool("back", backing);

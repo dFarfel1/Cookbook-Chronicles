@@ -6,6 +6,9 @@ public class Character : MonoBehaviour
 {
     private GameObject inventory;
     private bool inventoryOpen;
+
+    public Animator playerAnimator;
+
     void Start()
     {
         inventory = GameObject.Find("Inventory");
@@ -30,6 +33,7 @@ public class Character : MonoBehaviour
 				inventoryOpen = true;
             }
         }
+        
     }
 
     void OnTriggerStay(Collider collision)
@@ -37,12 +41,8 @@ public class Character : MonoBehaviour
         if (Input.GetKey("p")) {
             inventory.GetComponent<Inventory>().pickupItem(collision.gameObject);
         }
-        if (Input.GetMouseButton(0)) {
-            Debug.Log(collision.gameObject.name);
-            if (collision.gameObject.tag == "hittable") {
-                Debug.Log("hittable");
-                collision.gameObject.GetComponent<IOnHit>().onHit();
-            }
+        if (collision.gameObject.tag == "hittable" && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("swing")) {
+            collision.gameObject.GetComponent<IOnHit>().onHit();
         }
     }
 }

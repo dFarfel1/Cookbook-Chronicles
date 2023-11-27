@@ -127,7 +127,7 @@ public class Inventory : MonoBehaviour
 	{
 		if (selectedIndex >= 0 && items[selectedIndex].getName() != "None")
 		{
-			items[selectedIndex].generateClone(GameObject.Find("ModularCharacterPBR").transform.position);
+			items[selectedIndex].generateClone(GameObject.Find("FemaleCharacterPBR").transform.position);
 			int numItems = items[selectedIndex].drop();
 
 			if (numItems == 0)
@@ -142,6 +142,7 @@ public class Inventory : MonoBehaviour
 
 	private void pickup(GameObject item)
 	{
+		item.name = item.name.Replace("(Clone)","").Trim();
 		bool found = false;
 		for (int i = 0; i < numItems; i++)
 		{
@@ -149,7 +150,7 @@ public class Inventory : MonoBehaviour
 			{
 				found = true;
 				itemsDisplay[i].GetComponentsInChildren<Text>()[1].text = "Count: " + items[i].add().ToString();
-				item.SetActive(false);
+				Destroy(item);
 				break;
 			}
 		}
@@ -160,7 +161,7 @@ public class Inventory : MonoBehaviour
 			{
 				if (items[i].getName() == "None")
 				{
-					items[i].addFirstItem(item);
+					items[i].addFirstItem(item, gameObject);
 					itemsDisplay[i].GetComponentInChildren<Text>().text = item.name.Replace("(Clone)","").Trim(); //remove clone any names;
 					itemsDisplay[i].GetComponentsInChildren<Text>()[1].text = "Count: ";
 					item.SetActive(false);
@@ -188,8 +189,9 @@ class inventoryItem
 		return count;
 	}
 
-	public void addFirstItem(GameObject gameObject)
+	public void addFirstItem(GameObject gameObject, GameObject inventory)
 	{
+		gameObject.transform.SetParent(inventory.transform);
 		this.gameObject = gameObject;
 		count = 1;
 	}
@@ -211,6 +213,7 @@ class inventoryItem
 		GameObject newClone = GameObject.Instantiate(gameObject, position, Quaternion.identity);
 		newClone.SetActive(true);
 		newClone.transform.position = new Vector3(newClone.transform.position.x, newClone.transform.position.y + 0.25f, newClone.transform.position.z);
+		newClone.transform.SetParent(null);
 
 		newClone.name = newClone.name.Replace("(Clone)","").Trim(); //remove clone from the cloned object
 	}
