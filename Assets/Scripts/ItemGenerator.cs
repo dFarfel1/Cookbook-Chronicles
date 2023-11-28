@@ -11,20 +11,11 @@ public class NewBehaviourScript : MonoBehaviour
 	public GameObject prefab;
 	public float radius;
 	public float growthFactor;
-	public int itemIndex;
-
-	private int mask;
 
 	void Start()
 	{
 		StartCoroutine("spawn");
 		StartCoroutine("grow");
-		mask = 1;
-
-		for (int i = 0; i < itemIndex; i++)
-		{
-			mask *= 2;
-		}
 	}
 
 
@@ -44,6 +35,7 @@ public class NewBehaviourScript : MonoBehaviour
 				Vector3 position = new Vector3(transform.position.x + Random.Range(-radius, radius), transform.position.y, transform.position.z + Random.Range(-radius, radius));
 				position.y = Terrain.activeTerrain.SampleHeight(position); //spawn on ground
 				GameObject newObject = GameObject.Instantiate(prefab, position, Quaternion.identity);
+				//newObject.tag = "ingredient";
 				newObject.SetActive(true);
 
 				newObject.transform.SetParent(gameObject.transform);
@@ -68,4 +60,6 @@ public class NewBehaviourScript : MonoBehaviour
 			yield return new WaitForSeconds(6.0f);
 		}
 	}
+
+	
 }

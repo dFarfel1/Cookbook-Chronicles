@@ -38,11 +38,14 @@ public class Cooking : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "ingredient")
+	void OnTriggerStay(Collider collision){
+        //Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "pickup")
         {
 			value += cookingValues[collision.gameObject.name];
             inUseIngredients.Add(collision.gameObject);
+
+            Debug.Log(value);
 
             if (recipes.ContainsKey(value))
             {
@@ -54,12 +57,11 @@ public class Cooking : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-		if (collision.gameObject.tag == "ingredient")
+		if (collision.gameObject.tag == "pickup")
         {
 			value += cookingValues[collision.gameObject.name];
 			inUseIngredients.Remove(collision.gameObject);
 		}
-
 	}
 
     ulong pow2(int i)
