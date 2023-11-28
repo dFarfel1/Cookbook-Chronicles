@@ -7,7 +7,6 @@ public class pauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject resumeMenu;
 
-
     public bool isGamePaused(){
         return GameIsPaused;
     }
@@ -37,5 +36,15 @@ public class pauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    //LoadMainMenu
+    public void loadMainMenu(){
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    //quitGame
+    public void quitToDesktop(){
+        Application.Quit();
     }
 }
