@@ -8,6 +8,8 @@ TagManager:
   - pickup
   - CarrotGenerator
   - hittable
+  - Character
+  - ingredient
   layers:
   - Default
   - TransparentFX

@@ -11,11 +11,20 @@ public class NewBehaviourScript : MonoBehaviour
 	public GameObject prefab;
 	public float radius;
 	public float growthFactor;
+	public int itemIndex;
+
+	private int mask;
 
 	void Start()
 	{
 		StartCoroutine("spawn");
 		StartCoroutine("grow");
+		mask = 1;
+
+		for (int i = 0; i < itemIndex; i++)
+		{
+			mask *= 2;
+		}
 	}
 
 

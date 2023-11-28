@@ -14,6 +14,8 @@ public class Inventory : MonoBehaviour
 	private inventoryItem[] items;
 	public GameObject[] itemsDisplay;
 
+	//For testing purposes
+
 	private bool open;
 	public void selectItem(int i){
 		selectedCol = i % numCols - 1;
@@ -32,6 +34,7 @@ public class Inventory : MonoBehaviour
 		selectedCol = 0;
 		items = new inventoryItem[numItems];
 		itemsDisplay = new GameObject[numItems];
+
 
 		open = false;
 
