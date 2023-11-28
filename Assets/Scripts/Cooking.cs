@@ -6,7 +6,7 @@ public class Cooking : MonoBehaviour
 {
     private Dictionary<string, ulong> cookingValues;
     public Dictionary<ulong, GameObject> recipes;
-    private static string[] ingredientsList = { "Carrot", "WholeBirdRaw" };
+    private static string[] ingredientsList = { "Carrot", "chicken meat" };
     private List<GameObject> inUseIngredients;
     //public string test;
 
@@ -28,7 +28,7 @@ public class Cooking : MonoBehaviour
         }
 
         //One Recipe for now 2 carrots one chicken = carrot chicken
-        recipes[6] = cookedItems[0];
+        recipes[4] = cookedItems[0];
 
     }
 
@@ -38,18 +38,23 @@ public class Cooking : MonoBehaviour
         
     }
 
-	void OnTriggerStay(Collider collision){
+	void OnTriggerEnter(Collider collision){
         //Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "pickup")
         {
 			value += cookingValues[collision.gameObject.name];
             inUseIngredients.Add(collision.gameObject);
+            Destroy(collision.gameObject);
 
             Debug.Log(value);
 
             if (recipes.ContainsKey(value))
             {
-                GameObject.Instantiate(recipes[value], transform.position, Quaternion.identity);
+                Vector3 position = transform.position;
+                position.y += 1.0f;
+
+				Debug.Log("Recipe Made");
+                GameObject.Instantiate(recipes[value], position, Quaternion.identity).SetActive(true);
                 inUseIngredients.Clear();
 			}
 		}
@@ -61,6 +66,8 @@ public class Cooking : MonoBehaviour
         {
 			value += cookingValues[collision.gameObject.name];
 			inUseIngredients.Remove(collision.gameObject);
+
+			Debug.Log(value);
 		}
 	}
 
