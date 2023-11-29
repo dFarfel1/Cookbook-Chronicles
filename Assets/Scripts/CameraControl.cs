@@ -7,6 +7,7 @@ public class CameraControl : MonoBehaviour
         public GameObject player;
         public GameObject inventory;
         public pauseMenu pauseMenuScript;
+        public GameObject bookCanvas;
         private float cameraOffset;
         private float verticalSensitivity = -0.5f;
         private float leftRightRotation;
@@ -20,8 +21,9 @@ public class CameraControl : MonoBehaviour
         bool doNothing = inventory.GetComponent<Inventory>().isInventoryOpen();
         //bool
         bool doNothing2 = pauseMenuScript.isGamePaused();
+        bool doNothing3 = bookCanvas.active;
 
-        if (doNothing ||doNothing2) {
+        if (doNothing || doNothing2 || doNothing3) {
             return;
         }
         

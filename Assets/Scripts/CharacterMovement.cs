@@ -15,6 +15,7 @@ public class CharacterMovement : MonoBehaviour
     public AudioSource walkSound;
     public AudioSource jumpSound;
     public GameObject inventory;
+    public GameObject bookCanvas;
     private int speed = 8;
     private float jump_power = 10.0f;
     private float gravity = 20.0f;
@@ -31,6 +32,7 @@ public class CharacterMovement : MonoBehaviour
     private bool righting = false;
     private bool swinging = false;
     private bool playingWalk = false;
+    private bool bookOpen = false;
 
 
 
@@ -39,6 +41,7 @@ public class CharacterMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         // player.transform.position = new Vector3 (900,1,50);
         player.transform.rotation = new Quaternion (0,0,0,0);
+        bookCanvas.SetActive(false);
 
 
     }
@@ -59,10 +62,34 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        jumping = false;
+        forwarding = false;
+        backing = false;
+        landing = false;
+        lefting = false;
+        righting = false;
+        swinging = false;
 
         bool doNothing = inventory.GetComponent<Inventory>().isInventoryOpen();
         bool doNothing2 = pauseMenuScript.isGamePaused();
-        if (doNothing || doNothing2) {
+
+        if (doNothing || doNothing2 || bookOpen) {
+
+            if (Input.GetKeyDown("tab")) {
+                Cursor.lockState = CursorLockMode.Locked;
+                bookCanvas.SetActive(false);
+                bookOpen = false;
+            }
+            playerAnimator.SetBool("swing", swinging);
+            playerAnimator.SetBool("jump", jumping);
+            playerAnimator.SetBool("fwd", forwarding);
+            playerAnimator.SetBool("back", backing);
+            playerAnimator.SetBool("land", landing);
+            playerAnimator.SetBool("left", lefting);
+            playerAnimator.SetBool("right", righting);
+            playerAnimator.SetBool("air", !onGround);
+            walkSound.enabled = false;
+
             return;
         }
         //mouse rotation control
@@ -77,13 +104,7 @@ public class CharacterMovement : MonoBehaviour
         playingWalk = false;
         
         //used for animation control
-        jumping = false;
-        forwarding = false;
-        backing = false;
-        landing = false;
-        lefting = false;
-        righting = false;
-        swinging = false;
+        
 
 
         //movement
@@ -131,6 +152,18 @@ public class CharacterMovement : MonoBehaviour
                 vertical_speed = jump_power;
                 onGround = false;
                 jumpSound.Play();
+            }
+        }
+
+        if (Input.GetKeyDown("tab")) {
+            if (bookOpen) {
+                bookOpen = false;
+                bookCanvas.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+            } else {
+                bookOpen = true;
+                bookCanvas.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
             }
         }
         if (Input.GetMouseButtonDown(0)) {

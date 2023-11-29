@@ -31,6 +31,8 @@ public class book : MonoBehaviour
         if (rotate == true) { return; }
         float angle = -180;
         StartCoroutine(Rotate(angle, true));
+        forwardButton.SetActive(false);
+        backButton.SetActive(false);
     }
 
     public void ForwardButtonActions()
@@ -40,6 +42,8 @@ public class book : MonoBehaviour
         }
         if (index >= pages.Count - 1){
             forwardButton.SetActive(false);
+        } else {
+            forwardButton.SetActive(true);
         }
     }
 
@@ -47,6 +51,8 @@ public class book : MonoBehaviour
         if (rotate == true) { return; }
         float angle = 0;
         StartCoroutine(Rotate(angle, false));
+        forwardButton.SetActive(false);
+        backButton.SetActive(false);
     }
 
     public void BackButtonActions(){
@@ -57,6 +63,8 @@ public class book : MonoBehaviour
         if (index == 0)
         {
             backButton.SetActive(false);
+        } else {
+            backButton.SetActive(true);
         }
     }
 
@@ -81,18 +89,15 @@ public class book : MonoBehaviour
             
             if (angle1 < 0.1f)
             {
-                Debug.Log("angle small");
                 if (forward == false)
                 {
                     index--;
                     BackButtonActions();
                 } else {
-                    Debug.Log("angle++");
                     index ++;
                     ForwardButtonActions();
                 }
                 rotate = false;
-                Debug.Log(index);
                 break;
             }
             yield return null;

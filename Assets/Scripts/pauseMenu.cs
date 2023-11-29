@@ -8,12 +8,20 @@ public class pauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject resumeMenu;
 
+    public GameObject bookCanvas;
+    public GameObject inventory;
+
+    private bool wasBookCanvasEnabled = false;
+    private bool wasInventoryEnabled = false;
+
     public bool isGamePaused(){
         return GameIsPaused;
     }
 
     void Start(){
         resumeMenu.SetActive(false);
+
+
     }
     
     // Update is called once per frame
@@ -30,12 +38,18 @@ public class pauseMenu : MonoBehaviour
     }
 
     public void Resume(){
+        bookCanvas.SetActive(wasBookCanvasEnabled);
+        inventory.SetActive(wasInventoryEnabled);
         resumeMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
     void Pause(){
+        wasBookCanvasEnabled = bookCanvas.active;
+        wasInventoryEnabled = inventory.active;
+        bookCanvas.SetActive(false);
+        inventory.SetActive(false);
         resumeMenu.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
