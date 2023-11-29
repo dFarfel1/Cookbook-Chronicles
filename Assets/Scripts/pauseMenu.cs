@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class pauseMenu : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class pauseMenu : MonoBehaviour
 
     public bool isGamePaused(){
         return GameIsPaused;
+    }
+
+    void Start(){
+        resumeMenu.SetActive(false);
     }
     
     // Update is called once per frame
@@ -29,7 +34,6 @@ public class pauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
-       
     }
     void Pause(){
         resumeMenu.SetActive(true);
@@ -38,10 +42,20 @@ public class pauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
+    //this is here to manage cursor locks inbetween scenes
+    void helperFunc(){
+        resumeMenu.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
     //LoadMainMenu
     public void loadMainMenu(){
+
+        //refresh the resume menu
+        helperFunc();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadSceneAsync("Main Menu");
+        
     }
 
     //quitGame
