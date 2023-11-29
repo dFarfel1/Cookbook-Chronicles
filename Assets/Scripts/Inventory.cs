@@ -119,7 +119,7 @@ public class Inventory : MonoBehaviour
 
 	public void pickupItem (GameObject item)
 	{
-		if (item.tag == "pickup")
+		if (item.GetComponent<I_Item>() != null)
 		{
 			item.transform.SetParent(null);
 			pickup(item);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChickenHit : MonoBehaviour, IOnHit
+public class ChickenHit : MonoBehaviour, I_OnHit
 {
     public GameObject objectToDrop;
     public GameObject chicken;

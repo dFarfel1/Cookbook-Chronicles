@@ -41,8 +41,8 @@ public class Character : MonoBehaviour
         if (Input.GetKey("p")) {
             inventory.GetComponent<Inventory>().pickupItem(collision.gameObject);
         }
-        if (collision.gameObject.tag == "hittable" && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("swing")) {
-            collision.gameObject.GetComponent<IOnHit>().onHit();
+        if (collision.gameObject.GetComponent<I_OnHit>() != null && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("swing")) {
+            collision.gameObject.GetComponent<I_OnHit>().onHit();
         }
     }
 }

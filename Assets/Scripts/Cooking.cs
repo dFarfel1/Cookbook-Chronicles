@@ -40,7 +40,7 @@ public class Cooking : MonoBehaviour
 
 	void OnTriggerEnter(Collider collision){
         //Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.tag == "pickup")
+        if (collision.gameObject.GetComponent<Cookable>()!= null)
         {
 			value += cookingValues[collision.gameObject.name];
             inUseIngredients.Add(collision.gameObject);
@@ -60,16 +60,6 @@ public class Cooking : MonoBehaviour
 		}
     }
 
-    void OnCollisionExit(Collision collision)
-    {
-		if (collision.gameObject.tag == "pickup")
-        {
-			value += cookingValues[collision.gameObject.name];
-			inUseIngredients.Remove(collision.gameObject);
-
-			Debug.Log(value);
-		}
-	}
 
     ulong pow2(int i)
     {
