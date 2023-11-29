@@ -10,6 +10,7 @@ public class CharacterMovement : MonoBehaviour
     private float lookDir;
     public float mouseSensitivity = 3.0f;
     public GameObject player;
+    public pauseMenu pauseMenuScript;
     public Animator playerAnimator;
     public AudioSource walkSound;
     public AudioSource jumpSound;
@@ -60,7 +61,8 @@ public class CharacterMovement : MonoBehaviour
     {
 
         bool doNothing = inventory.GetComponent<Inventory>().isInventoryOpen();
-        if (doNothing) {
+        bool doNothing2 = pauseMenuScript.isGamePaused();
+        if (doNothing || doNothing2) {
             return;
         }
         //mouse rotation control

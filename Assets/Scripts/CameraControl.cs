@@ -6,22 +6,22 @@ public class CameraControl : MonoBehaviour
 {
         public GameObject player;
         public GameObject inventory;
+        public pauseMenu pauseMenuScript;
         private float cameraOffset;
         private float verticalSensitivity = -0.5f;
         private float leftRightRotation;
         private float cameraTerrainHeightAdjustment = 0.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-		
-	}
+
 
     // Update is called once per frame
     void Update()
     {
         bool doNothing = inventory.GetComponent<Inventory>().isInventoryOpen();
-        if (doNothing) {
+        //bool
+        bool doNothing2 = pauseMenuScript.isGamePaused();
+
+        if (doNothing ||doNothing2) {
             return;
         }
         
