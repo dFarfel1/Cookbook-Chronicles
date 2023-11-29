@@ -7,9 +7,6 @@ TagManager:
   - CharacterSoundSphere
   - pickup
   - CarrotGenerator
-  - hittable
-  - Character
-  - ingredient
   layers:
   - Default
   - TransparentFX
