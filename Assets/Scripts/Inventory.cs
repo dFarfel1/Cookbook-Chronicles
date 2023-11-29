@@ -119,7 +119,7 @@ public class Inventory : MonoBehaviour
 
 	public void pickupItem (GameObject item)
 	{
-		if (item.tag == "pickup")
+		if (item.GetComponent<I_Item>() != null)
 		{
 			item.transform.SetParent(null);
 			pickup(item);
@@ -135,10 +135,10 @@ public class Inventory : MonoBehaviour
 
 			if (numItems == 0)
 			{
-				itemsDisplay[selectedIndex].GetComponentInChildren<Text>().text = "none";
+				itemsDisplay[selectedIndex].GetComponentInChildren<Image>().sprite = null;
 			}
 
-			itemsDisplay[selectedIndex].GetComponentsInChildren<Text>()[1].text = "Count: " + numItems.ToString();
+			itemsDisplay[selectedIndex].GetComponentInChildren<Text>().text = "Count: " + numItems.ToString();
 			
 		}
 	}
@@ -152,7 +152,7 @@ public class Inventory : MonoBehaviour
 			if (items[i].getName() == item.name)
 			{
 				found = true;
-				itemsDisplay[i].GetComponentsInChildren<Text>()[1].text = "Count: " + items[i].add().ToString();
+				itemsDisplay[i].GetComponentInChildren<Text>().text = "Count: " + items[i].add().ToString();
 				Destroy(item);
 				break;
 			}
@@ -165,8 +165,8 @@ public class Inventory : MonoBehaviour
 				if (items[i].getName() == "None")
 				{
 					items[i].addFirstItem(item, gameObject);
-					itemsDisplay[i].GetComponentInChildren<Text>().text = item.name.Replace("(Clone)","").Trim(); //remove clone any names;
-					itemsDisplay[i].GetComponentsInChildren<Text>()[1].text = "Count: ";
+					itemsDisplay[i].GetComponent<Image>().sprite = item.GetComponent<I_Item>().getSprite();
+					itemsDisplay[i].GetComponentInChildren<Text>().text = "Count: 1";
 					item.SetActive(false);
 					break;
 				}
