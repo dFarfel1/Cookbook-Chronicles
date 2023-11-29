@@ -6,7 +6,7 @@ public class book : MonoBehaviour
 {
     [SerializeField] float pageSpeed = 0.1f;
     [SerializeField] List<Transform> pages;
-    int index = -1;
+    int index = 0;
     bool rotate = false;
     [SerializeField] GameObject backButton;
     [SerializeField] GameObject forwardButton;
@@ -29,10 +29,7 @@ public class book : MonoBehaviour
     public void RotateForward()
     {
         if (rotate == true) { return; }
-        index++;
         float angle = -180;
-        ForwardButtonActions();
-        pages[index].SetAsLastSibling();
         StartCoroutine(Rotate(angle, true));
     }
 
@@ -41,7 +38,7 @@ public class book : MonoBehaviour
         if (backButton.activeInHierarchy == false){
             backButton.SetActive(true);
         }
-        if (index == pages.Count - 1){
+        if (index >= pages.Count - 1){
             forwardButton.SetActive(false);
         }
     }
@@ -49,8 +46,6 @@ public class book : MonoBehaviour
     public void RotateBack(){
         if (rotate == true) { return; }
         float angle = 0;
-        pages[index].SetAsLastSibling();
-        BackButtonActions();
         StartCoroutine(Rotate(angle, false));
     }
 
@@ -59,7 +54,7 @@ public class book : MonoBehaviour
         {
             forwardButton.SetActive(true);
         }
-        if (index - 1 == -1)
+        if (index == 0)
         {
             backButton.SetActive(false);
         }
@@ -68,18 +63,36 @@ public class book : MonoBehaviour
     IEnumerator Rotate(float angle, bool forward){
         float value = 0f;
         while (true){
+            int pageToRotate = index;
+            if (!forward) {
+                pageToRotate = index-1;
+            }
             rotate = true;
             Quaternion targetRotation = Quaternion.Euler(0, angle, 0);
             value += Time.deltaTime * pageSpeed;
-            pages[index].localRotation = Quaternion.Slerp(pages[index].localRotation, targetRotation, value);
-            float angle1 = Quaternion.Angle(pages[index].localRotation, targetRotation);
+            pages[pageToRotate].localRotation = Quaternion.Slerp(pages[pageToRotate].localRotation, targetRotation, value);
+            float angle1 = Quaternion.Angle(pages[pageToRotate].localRotation, targetRotation);
+            if (angle1 < 90.0f && forward)  {
+                pages[index+1].SetAsLastSibling();    
+            }
+            if (angle1 < 90.0f && !forward)  {
+                pages[index-1].SetAsLastSibling();    
+            }
+            
             if (angle1 < 0.1f)
             {
+                Debug.Log("angle small");
                 if (forward == false)
                 {
                     index--;
+                    BackButtonActions();
+                } else {
+                    Debug.Log("angle++");
+                    index ++;
+                    ForwardButtonActions();
                 }
                 rotate = false;
+                Debug.Log(index);
                 break;
             }
             yield return null;
