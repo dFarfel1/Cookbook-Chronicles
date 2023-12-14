@@ -37,6 +37,8 @@ public class Character : MonoBehaviour
 			if (time <= 0) {
 				time = 10000;
 				Debug.Log("Lost a life");
+
+				loseLife();
 			}
 
 			if (Input.GetKeyDown("b")) {
@@ -57,6 +59,8 @@ public class Character : MonoBehaviour
 
 
 	}
+
+	public void loseLife
 
     void OnTriggerStay(Collider collision)
     {
