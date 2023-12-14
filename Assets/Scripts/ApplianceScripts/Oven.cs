@@ -11,7 +11,7 @@ public class Oven : Cooking
 		//One Recipe for now 2 carrots one chicken = carrot chicken
 		recipes = new Dictionary<ulong, GameObject>
 		{
-			{6, cookedItems[0]}
+			{6, cookedItems[1]}
 		};
 		
 	}
