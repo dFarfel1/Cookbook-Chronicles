@@ -10,7 +10,12 @@ public class Character : MonoBehaviour
     private bool inCookingArea;
 
     public Slider hunger; 
-    private int health;
+    public int health;
+	public int numOfHearts;
+	public Image[] hearts;
+	public Sprite fullHeart;
+	public Sprite emptyHeart;
+
     private int time;
     public Animator playerAnimator;
 
@@ -28,14 +33,37 @@ public class Character : MonoBehaviour
     }
 
     void Update()
-    {
-		
+    {	
+		//deals with siturations if extra health was added
+		if(health > numOfHearts){
+			health = numOfHearts;
+		}
+		//updating number of hearts
+		for(int i= 0; i<hearts.Length; i++){
+
+			//cosmetics of filled or unfilled heart
+			if(i < health){
+				hearts[i].sprite = fullHeart;
+			}
+			else{
+				hearts[i].sprite = emptyHeart;
+			}
+
+			if(i < numOfHearts){
+				hearts[i].enabled  = true;
+			}
+			else{
+				hearts[i].enabled  = false;
+			}
+
+		}
         if (!pauseCanvas.GetComponent<pauseMenu>().isGamePaused()) {
 			time--;
 			hunger.value = time;
 
 			if (time <= 0) {
 				time = 10000;
+				health -- ;
 				Debug.Log("Lost a life");
 
 			}

@@ -20,8 +20,6 @@ public class pauseMenu : MonoBehaviour
 
     void Start(){
         resumeMenu.SetActive(false);
-
-
     }
     
     // Update is called once per frame
@@ -45,6 +43,7 @@ public class pauseMenu : MonoBehaviour
         GameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
     void Pause(){
         wasBookCanvasEnabled = bookCanvas.active;
         wasInventoryEnabled = inventory.active;
