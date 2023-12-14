@@ -8629,6 +8629,7 @@ GameObject:
   - component: {fileID: 1480134486}
   - component: {fileID: 1480134485}
   - component: {fileID: 1480134484}
+  - component: {fileID: 1480134488}
   m_Layer: 0
   m_Name: Burnt
   m_TagString: Untagged
@@ -8722,6 +8723,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1480134488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480134483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6552f06d01aa15345a057ccd34818dbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: a4fce3aaef597654598c24eb24154b76, type: 3}
 --- !u!1 &1500628275
 GameObject:
   m_ObjectHideFlags: 0
@@ -12443,6 +12457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookedItems:
+  - {fileID: 1480134483}
   - {fileID: 786317210}
   instructions: {fileID: 2108112314}
   mistake: {fileID: 1480134483}

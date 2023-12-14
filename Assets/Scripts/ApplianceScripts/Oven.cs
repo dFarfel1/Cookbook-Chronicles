@@ -9,6 +9,10 @@ public class Oven : Cooking
 		ingredientsList = new List<string> { "Carrot", "chicken meat" };
 
 		//One Recipe for now 2 carrots one chicken = carrot chicken
-		recipes[4] = cookedItems[0];
+		recipes = new Dictionary<ulong, GameObject>
+		{
+			{6, cookedItems[0]}
+		};
+		
 	}
 }

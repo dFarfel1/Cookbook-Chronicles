@@ -7,32 +7,28 @@ public class Cooking : MonoBehaviour
     private Dictionary<string, ulong> cookingValues;
     public Dictionary<ulong, GameObject> recipes;
     protected List<string> ingredientsList;
-    
+    private Dictionary<string, int> inUse;
     
     //public string test;
 
     public GameObject[] cookedItems;
     public GameObject instructions;
-    public GameObject mistake;
+    public GameObject mistake; 
     
-
-	private ulong value;
     // Start is called before the first frame update
     void Start()
     {
 		cookingValues = new Dictionary<string, ulong>();
-		recipes = new Dictionary<ulong, GameObject>();
+        inUse = new Dictionary<string, int>();
 		instructions.GetComponent<Canvas>().enabled = false;
 
         
-
         populateRecipes();
+        clear();
 
-		value = 0;
-
-        for (int i = 0; i < ingredientsList.Count;  i++)
+        for (int i = 0; i < ingredientsList.Count * 2;  i += 2)
         {
-            cookingValues[ingredientsList[i]] = pow2(i);
+            cookingValues[ingredientsList[i/2]] = pow2(i);
         }
 
         
@@ -50,10 +46,8 @@ public class Cooking : MonoBehaviour
 		//Debug.Log(value);
 		if (collision.gameObject.GetComponent<Cookable>()!= null)
         {
-			value += cookingValues[collision.gameObject.name];
-            Destroy(collision.gameObject);
-
-            Debug.Log(value);
+            inUse[collision.gameObject.name]++;
+			Destroy(collision.gameObject);
 		}
         else if (collision.gameObject.GetComponent<CharacterMovement>() != null) {
             instructions.GetComponent<Canvas>().enabled = true;
@@ -91,17 +85,39 @@ public class Cooking : MonoBehaviour
     public void cook() {
 		Vector3 position = transform.position;
 		position.y += 1.5f;
+
+        ulong value = 0;
+
+		foreach (string ingredient in ingredientsList) {
+            ulong quantity = (ulong) inUse[ingredient];
+            if (quantity >= 4) {
+                value = 0;
+                break; 
+            }
+
+            value += quantity * cookingValues[ingredient];
+		}
+
+        Debug.Log(value);
+
 		if (recipes.ContainsKey(value)) {
             Debug.Log("Recipe Made");
             GameObject.Instantiate(recipes[value], position, Quaternion.identity).SetActive(true);
-            value = 0;
         }
         else {
 			GameObject.Instantiate(mistake, position, Quaternion.identity).SetActive(true);
 		}
+
+        clear();
 	}
 
     public virtual void populateRecipes() {
         Debug.Log("Wrong One!");
+    }
+
+    public void clear() {
+        foreach(string ingredient in ingredientsList) {
+            inUse[ingredient] = 0;
+        }
     }
 }
