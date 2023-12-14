@@ -53,13 +53,23 @@ public class Inventory : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		bool wasLocked = false;
+
+		if (Cursor.lockState == CursorLockMode.Locked) { 
+			wasLocked = true; 
+		}
+
 		if (Input.GetKeyDown("b"))
 		{
 			if (open)
 			{
 				GetComponent<Canvas>().enabled = false;
 				open = false;
-				Cursor.lockState = CursorLockMode.Locked;
+
+				if (wasLocked) {
+					Cursor.lockState = CursorLockMode.Locked;
+				}
+				
 			}
 			else
 			{

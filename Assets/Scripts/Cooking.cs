@@ -7,10 +7,12 @@ public class Cooking : MonoBehaviour
     private Dictionary<string, ulong> cookingValues;
     public Dictionary<ulong, GameObject> recipes;
     private static string[] ingredientsList = { "Carrot", "chicken meat" };
-    private List<GameObject> inUseIngredients;
+    
+    
     //public string test;
 
     public GameObject[] cookedItems;
+    public GameObject instructions;
 
 	private ulong value;
     // Start is called before the first frame update
@@ -18,7 +20,7 @@ public class Cooking : MonoBehaviour
     {
 		cookingValues = new Dictionary<string, ulong>();
 		recipes = new Dictionary<ulong, GameObject>();
-		inUseIngredients = new List<GameObject>();
+		instructions.GetComponent<Canvas>().enabled = false;
 
 		value = 0;
 
@@ -39,26 +41,37 @@ public class Cooking : MonoBehaviour
     }
 
 	void OnTriggerEnter(Collider collision){
-        //Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.GetComponent<Cookable>()!= null)
+		//Debug.Log(collision.gameObject.tag);
+		//Debug.Log(value);
+		if (collision.gameObject.GetComponent<Cookable>()!= null)
         {
 			value += cookingValues[collision.gameObject.name];
-            inUseIngredients.Add(collision.gameObject);
             Destroy(collision.gameObject);
 
             Debug.Log(value);
 
-            if (recipes.ContainsKey(value))
-            {
-                Vector3 position = transform.position;
-                position.y += 1.0f;
-
-				Debug.Log("Recipe Made");
-                GameObject.Instantiate(recipes[value], position, Quaternion.identity).SetActive(true);
-                inUseIngredients.Clear();
-			}
+            
 		}
+        else if (collision.gameObject.GetComponent<CharacterMovement>() != null) {
+            instructions.GetComponent<Canvas>().enabled = true;
+			Cursor.lockState = CursorLockMode.None;
+			Debug.Log("Cooking Instrcutions Enabled");
+		}
+        else {
+            Debug.Log("Collision Type not recognized. Name: " + collision.gameObject.name);
+        }
     }
+
+    void OnTriggerExit(Collider collision) {
+		if (collision.gameObject.GetComponent<CharacterMovement>() != null) {
+			instructions.GetComponent<Canvas>().enabled = false;
+			Cursor.lockState = CursorLockMode.Locked;
+			Debug.Log("Cooking Instrcutions Disabled");
+		}
+		else {
+			Debug.Log("De-Collision Type not recognized. Name: " + collision.gameObject.name);
+		}
+	}
 
 
     ulong pow2(int i)
@@ -71,4 +84,15 @@ public class Cooking : MonoBehaviour
 
         return two * pow2(i - 1);
     }
+
+    public void cook() {
+		if (recipes.ContainsKey(value)) {
+			Vector3 position = transform.position;
+			position.y += 1.5f;
+
+			Debug.Log("Recipe Made");
+			GameObject.Instantiate(recipes[value], position, Quaternion.identity).SetActive(true);
+			value = 0;
+		}
+	}
 }
