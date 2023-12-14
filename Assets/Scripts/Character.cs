@@ -6,12 +6,15 @@ public class Character : MonoBehaviour
 {
     private GameObject inventory;
     private bool inventoryOpen;
+    private bool inCookingArea;
+
 
     public Animator playerAnimator;
 
     void Start()
     {
         inventory = GameObject.Find("Inventory");
+
 
 		inventory.GetComponent<Canvas>().enabled = false;
 		inventoryOpen = false;
@@ -26,23 +29,32 @@ public class Character : MonoBehaviour
             {
 				inventory.GetComponent<Canvas>().enabled = false;
 				inventoryOpen = false;
+
 			}
             else
             {
 				inventory.GetComponent<Canvas>().enabled = true;
 				inventoryOpen = true;
-            }
+			}
         }
         
     }
 
     void OnTriggerStay(Collider collision)
     {
-        if (Input.GetKey("p")) {
-            inventory.GetComponent<Inventory>().pickupItem(collision.gameObject);
+		if (collision.gameObject.GetComponent<Cooking>() != null) {
+            inCookingArea = true;
         }
-        if (collision.gameObject.GetComponent<I_OnHit>() != null && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("swing")) {
-            collision.gameObject.GetComponent<I_OnHit>().onHit();
-        }
+        else {
+			if (Input.GetKey("p")) {
+				inventory.GetComponent<Inventory>().pickupItem(collision.gameObject);
+			}
+			if (collision.gameObject.GetComponent<I_OnHit>() != null && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("swing")) {
+				collision.gameObject.GetComponent<I_OnHit>().onHit();
+			}
+		}
+		
     }
+
+    
 }

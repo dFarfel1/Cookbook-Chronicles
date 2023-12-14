@@ -6,29 +6,32 @@ public class Cooking : MonoBehaviour
 {
     private Dictionary<string, ulong> cookingValues;
     public Dictionary<ulong, GameObject> recipes;
-    private static string[] ingredientsList = { "Carrot", "chicken meat" };
-    private List<GameObject> inUseIngredients;
+    protected List<string> ingredientsList;
+    private Dictionary<string, int> inUse;
+    
     //public string test;
 
     public GameObject[] cookedItems;
-
-	private ulong value;
+    public GameObject instructions;
+    public GameObject mistake; 
+    
     // Start is called before the first frame update
     void Start()
     {
 		cookingValues = new Dictionary<string, ulong>();
-		recipes = new Dictionary<ulong, GameObject>();
-		inUseIngredients = new List<GameObject>();
+        inUse = new Dictionary<string, int>();
+		instructions.GetComponent<Canvas>().enabled = false;
 
-		value = 0;
+        
+        populateRecipes();
+        clear();
 
-        for (int i = 0; i < ingredientsList.Length;  i++)
+        for (int i = 0; i < ingredientsList.Count * 2;  i += 2)
         {
-            cookingValues[ingredientsList[i]] = pow2(i);
+            cookingValues[ingredientsList[i/2]] = pow2(i);
         }
 
-        //One Recipe for now 2 carrots one chicken = carrot chicken
-        recipes[4] = cookedItems[0];
+        
 
     }
 
@@ -39,26 +42,33 @@ public class Cooking : MonoBehaviour
     }
 
 	void OnTriggerEnter(Collider collision){
-        //Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.GetComponent<Cookable>()!= null)
+		//Debug.Log(collision.gameObject.tag);
+		//Debug.Log(value);
+		if (collision.gameObject.GetComponent<Cookable>()!= null)
         {
-			value += cookingValues[collision.gameObject.name];
-            inUseIngredients.Add(collision.gameObject);
-            Destroy(collision.gameObject);
-
-            Debug.Log(value);
-
-            if (recipes.ContainsKey(value))
-            {
-                Vector3 position = transform.position;
-                position.y += 1.0f;
-
-				Debug.Log("Recipe Made");
-                GameObject.Instantiate(recipes[value], position, Quaternion.identity).SetActive(true);
-                inUseIngredients.Clear();
-			}
+            inUse[collision.gameObject.name]++;
+			Destroy(collision.gameObject);
 		}
+        else if (collision.gameObject.GetComponent<CharacterMovement>() != null) {
+            instructions.GetComponent<Canvas>().enabled = true;
+			Cursor.lockState = CursorLockMode.None;
+			//Debug.Log("Cooking Instrcutions Enabled");
+		}
+        else {
+            //Debug.Log("Collision Type not recognized. Name: " + collision.gameObject.name);
+        }
     }
+
+    void OnTriggerExit(Collider collision) {
+		if (collision.gameObject.GetComponent<CharacterMovement>() != null) {
+			instructions.GetComponent<Canvas>().enabled = false;
+			Cursor.lockState = CursorLockMode.Locked;
+			//Debug.Log("Cooking Instrcutions Disabled");
+		}
+		else {
+			//Debug.Log("De-Collision Type not recognized. Name: " + collision.gameObject.name);
+		}
+	}
 
 
     ulong pow2(int i)
@@ -70,5 +80,44 @@ public class Cooking : MonoBehaviour
         }
 
         return two * pow2(i - 1);
+    }
+
+    public void cook() {
+		Vector3 position = transform.position;
+		position.y += 1.5f;
+
+        ulong value = 0;
+
+		foreach (string ingredient in ingredientsList) {
+            ulong quantity = (ulong) inUse[ingredient];
+            if (quantity >= 4) {
+                value = 0;
+                break; 
+            }
+
+            value += quantity * cookingValues[ingredient];
+		}
+
+        Debug.Log(value);
+
+		if (recipes.ContainsKey(value)) {
+            Debug.Log("Recipe Made");
+            GameObject.Instantiate(recipes[value], position, Quaternion.identity).SetActive(true);
+        }
+        else {
+			GameObject.Instantiate(mistake, position, Quaternion.identity).SetActive(true);
+		}
+
+        clear();
+	}
+
+    public virtual void populateRecipes() {
+        Debug.Log("Wrong One!");
+    }
+
+    public void clear() {
+        foreach(string ingredient in ingredientsList) {
+            inUse[ingredient] = 0;
+        }
     }
 }
