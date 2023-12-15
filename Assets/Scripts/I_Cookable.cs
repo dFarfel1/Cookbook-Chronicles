@@ -1,4 +1,5 @@
-public interface I_Cookable : I_Item
-{
+using UnityEngine;
+
+public interface I_Cookable { 
 
 }
