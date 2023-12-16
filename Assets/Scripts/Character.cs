@@ -161,7 +161,7 @@ public class Character : MonoBehaviour
 		if (collision.gameObject.GetComponent<Cooking>() != null) {
             inCookingArea = true;
         }
-        else if ((collision.gameObject.GetComponent<Plant>() == null) {
+        else if (collision.gameObject.GetComponent<Plant>() == null) {
 			nutritionLabel.SetActive(true);
 			if (Input.GetKey("p")) {
 				inventory.GetComponent<Inventory>().pickupItem(collision.gameObject);
