@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Cooking : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class Cooking : MonoBehaviour
     public GameObject[] cookedItems;
     public GameObject instructions;
     public GameObject mistake; 
+    public GameObject pickUpArea;
+
+    public TextMeshProUGUI text;
     
     // Start is called before the first frame update
     void Start()
@@ -31,14 +35,12 @@ public class Cooking : MonoBehaviour
             cookingValues[ingredientsList[i/2]] = pow2(i);
         }
 
-        
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        text.text = "Level: " + GetComponent<Character>().curLevel(4);
     }
 
 	void OnTriggerEnter(Collider collision){
@@ -99,11 +101,13 @@ public class Cooking : MonoBehaviour
 		}
 
         // successful
-        Debug.Log(value);
-        if(value == 6){
-            
+        //Debug.Log(value);
+        if(value == 6 ||value ==48||value == 1728 ||value == 41989){
+            pickUpArea.GetComponent<Character>().levelUp();
         }
 
+
+   
 		if (recipes.ContainsKey(value)) {
             Debug.Log("Recipe Made");
             GameObject.Instantiate(recipes[value], position, Quaternion.identity).SetActive(true);
@@ -111,7 +115,6 @@ public class Cooking : MonoBehaviour
         else {
 			GameObject.Instantiate(mistake, position, Quaternion.identity).SetActive(true);
 		}
-
         clear();
 	}
 
