@@ -8,4 +8,6 @@ public interface I_Item
 
 	public int[] getNutritionInfo();
 
+	public string getName();
+
 }

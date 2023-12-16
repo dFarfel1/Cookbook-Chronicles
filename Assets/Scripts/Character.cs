@@ -166,6 +166,8 @@ public class Character : MonoBehaviour
         else if (collision.gameObject.GetComponent<Plant>() == null && collision.gameObject.GetComponent<Item>() != null) {
 			nutritionLabel.SetActive(true);
 
+			nutriotionLabelTitle.text = collision.gameObject.GetComponent<Item>().getName();
+
 			Slider[] sliders = nutritionLabel.GetComponentsInChildren<Slider>();
 			int[] nutritionInfo = collision.gameObject.GetComponent<Item>().getNutritionInfo();
 

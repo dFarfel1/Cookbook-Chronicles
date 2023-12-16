@@ -861,6 +861,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!65 &78409660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1358,6 +1359,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!1001 &145589994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2486,6 +2488,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!1 &323002228 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2834595618098478615, guid: d1e3a6c529e9c4ecc9260a8dcbc4e6bc, type: 3}
@@ -2509,6 +2512,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!65 &323002230
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3340,11 +3344,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: cc1b948b4bc468b469d7fa7082755b1a, type: 3}
-  protein: 0
-  carbs: 0
-  fiber: 0
-  calories: 0
+  protein: 2
+  carbs: 5
+  fiber: 10
+  calories: 100
   isPoisoned: 0
+  name: Carrot
 --- !u!1 &442371592
 GameObject:
   m_ObjectHideFlags: 0
@@ -4065,7 +4070,7 @@ RectTransform:
   m_Father: {fileID: 325218957}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5358,7 +5363,7 @@ RectTransform:
   m_Father: {fileID: 479900330}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6682,6 +6687,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!135 &783795112
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6891,6 +6897,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!1 &791788566
 GameObject:
   m_ObjectHideFlags: 0
@@ -7135,6 +7142,8 @@ MonoBehaviour:
   pauseCanvas: {fileID: 635681735}
   playAgainCanvas: {fileID: 0}
   nutritionLabel: {fileID: 1577209832}
+  nutriotionLabelTitle: {fileID: 361425743}
+  Eat: {fileID: 0}
   levels: 
 --- !u!65 &796331618
 BoxCollider:
@@ -7267,7 +7276,7 @@ RectTransform:
   m_Father: {fileID: 657962356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8122,7 +8131,7 @@ RectTransform:
   m_Father: {fileID: 1506467056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9017,6 +9026,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!1 &979322213
 GameObject:
   m_ObjectHideFlags: 0
@@ -9772,7 +9782,7 @@ RectTransform:
   m_Father: {fileID: 89015561}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11480,6 +11490,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!1 &1218840696
 GameObject:
   m_ObjectHideFlags: 0
@@ -12442,6 +12453,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!135 &1340181267
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13339,6 +13351,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!1001 &1484532893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13974,7 +13987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1577209833
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14353,7 +14366,7 @@ RectTransform:
   m_Father: {fileID: 288709944}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -14552,6 +14565,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!65 &1606968134
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16769,7 +16783,7 @@ RectTransform:
   m_Father: {fileID: 616931325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -17398,6 +17412,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!1 &1949487854
 GameObject:
   m_ObjectHideFlags: 0
@@ -17690,7 +17705,7 @@ RectTransform:
   m_Father: {fileID: 663577581}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18031,6 +18046,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!1 &2006792233
 GameObject:
   m_ObjectHideFlags: 0
@@ -18804,6 +18820,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
+  name: 
 --- !u!135 &2043437603
 SphereCollider:
   m_ObjectHideFlags: 0

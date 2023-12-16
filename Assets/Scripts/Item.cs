@@ -12,6 +12,8 @@ public class Item : MonoBehaviour, I_Item
 	public int calories;
 	public bool isPoisoned;
 
+	public string name;
+
 
 	public Sprite getSprite()
 	{
@@ -24,6 +26,10 @@ public class Item : MonoBehaviour, I_Item
 
 	public int[] getNutritionInfo() {
 		return new int[] {protein, carbs, fiber, calories};
+	}
+
+	public string getName() {
+		return name;
 	}
 
 }
