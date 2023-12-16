@@ -81,7 +81,7 @@ public class Character : MonoBehaviour
 			hunger.value = time;
 
 			if (time <= 0) {
-				time = 10000;
+				time = 2000;
 				health -- ;
 				Debug.Log("Lost a life");
 
@@ -181,6 +181,16 @@ public class Character : MonoBehaviour
 			if (Input.GetKey("p")) {
 				inventory.GetComponent<Inventory>().pickupItem(collision.gameObject);
 				nutritionLabel.SetActive(false);
+			}
+			else if (Input.GetKey("e")) {
+				GameObject.Destroy(collision.gameObject);
+				time += nutritionInfo[4];
+
+				if (time > 2000) {time = 2000;}
+
+				if (collision.gameObject.GetComponent<Item>().isPoison()) {
+					health--;
+				}
 			}
 			if (collision.gameObject.GetComponent<I_OnHit>() != null && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("swing")) {
 				collision.gameObject.GetComponent<I_OnHit>().onHit();
