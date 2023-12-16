@@ -15,7 +15,7 @@ public class Cooking : MonoBehaviour
     public GameObject[] cookedItems;
     public GameObject instructions;
     public GameObject mistake; 
-    public GameObject pickUpArea;
+    //public GameObject pickUpArea;
 
     //public TextMeshProUGUI text;
     
@@ -103,7 +103,7 @@ public class Cooking : MonoBehaviour
         // successful
         //Debug.Log(value);
         if(value == 6 ||value ==48||value == 1728 ||value == 41989){
-            pickUpArea.GetComponent<Character>().levelUp();
+            //pickUpArea.GetComponent<Character>().levelUp();
         }
 
 
