@@ -53,8 +53,13 @@ public class NewBehaviourScript : MonoBehaviour
 			{
 				if (item.localScale.x < maxGrowth)
 				{
-					item.localScale *= growthFactor;
+					item.localScale *= growthFactor * Random.Range(.75f, 1.25f);
 				}
+				else if (item.gameObject.GetComponent<Plant>() != null) {
+					GameObject.Instantiate(item.gameObject.GetComponent<Plant>().getFruit(), item.position, Quaternion.identity).SetActive(true);
+					Destroy(item.gameObject);
+				}
+				
 				
 			}
 			yield return new WaitForSeconds(6.0f);
