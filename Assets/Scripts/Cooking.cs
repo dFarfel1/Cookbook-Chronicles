@@ -98,7 +98,11 @@ public class Cooking : MonoBehaviour
             value += quantity * cookingValues[ingredient];
 		}
 
+        // successful
         Debug.Log(value);
+        if(value == 6){
+            
+        }
 
 		if (recipes.ContainsKey(value)) {
             Debug.Log("Recipe Made");
