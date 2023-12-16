@@ -33,6 +33,7 @@ public class CharacterMovement : MonoBehaviour
     private bool swinging = false;
     private bool playingWalk = false;
     private bool bookOpen = false;
+    public GameObject pickUpArea;
 
 
 
@@ -72,8 +73,10 @@ public class CharacterMovement : MonoBehaviour
 
         bool doNothing = inventory.GetComponent<Inventory>().isInventoryOpen();
         bool doNothing2 = pauseMenuScript.isGamePaused();
+        bool doNothing3 = pickUpArea.GetComponent<Character>().isGameOver();
+        
 
-        if (doNothing || doNothing2 || bookOpen) {
+        if (doNothing || doNothing2 || bookOpen || doNothing3) {
 
             if (Input.GetKeyDown("tab")) {
                 Cursor.lockState = CursorLockMode.Locked;

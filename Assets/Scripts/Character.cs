@@ -16,16 +16,20 @@ public class Character : MonoBehaviour
 	public Sprite fullHeart;
 	public Sprite emptyHeart;
 
+	public bool gameOver;
+
     private int time;
     public Animator playerAnimator;
 
     public GameObject pauseCanvas;
+	public GameObject playAgainCanvas;
 
     void Start()
     {
         inventory = GameObject.Find("Inventory");
         health = 3;
         time = 10000;
+		gameOver = false;
 
 		inventory.GetComponent<Canvas>().enabled = false;
 		inventoryOpen = false;
@@ -34,6 +38,11 @@ public class Character : MonoBehaviour
 
     void Update()
     {	
+		if(health <= 0){
+			Debug.Log("You Lost!");
+			gameOver = true;
+		}
+			
 		//deals with siturations if extra health was added
 		if(health > numOfHearts){
 			health = numOfHearts;
@@ -87,6 +96,14 @@ public class Character : MonoBehaviour
 
 	}
 
+	//returns gameOver status if needed by other scripts
+	public bool isGameOver(){
+		return gameOver;
+	}
+
+	public void setGameOver(bool condition){
+		gameOver = condition;
+	}
 
     void OnTriggerStay(Collider collision)
     {
