@@ -25,6 +25,8 @@ public class Character : MonoBehaviour
     public GameObject pauseCanvas;
 	public GameObject playAgainCanvas;
 
+	public GameObject nutritionLabel; 
+
 	public bool[] levels;
 
     void Start()
@@ -159,13 +161,17 @@ public class Character : MonoBehaviour
 		if (collision.gameObject.GetComponent<Cooking>() != null) {
             inCookingArea = true;
         }
-        else {
+        else if ((collision.gameObject.GetComponent<Plant>() == null) {
+			nutritionLabel.SetActive(true);
 			if (Input.GetKey("p")) {
 				inventory.GetComponent<Inventory>().pickupItem(collision.gameObject);
+				nutritionLabel.SetActive(false);
 			}
 			if (collision.gameObject.GetComponent<I_OnHit>() != null && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("swing")) {
 				collision.gameObject.GetComponent<I_OnHit>().onHit();
-			}
+			} 
+
+			
 		}
 		
     }
