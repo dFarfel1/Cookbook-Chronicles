@@ -25,7 +25,9 @@ public class Character : MonoBehaviour
     public GameObject pauseCanvas;
 	public GameObject playAgainCanvas;
 
-	public GameObject nutritionLabel; 
+	public GameObject nutritionLabel;
+	public Text nutriotionLabelTitle;
+	public Text Eat;
 
 	public bool[] levels;
 
@@ -161,8 +163,19 @@ public class Character : MonoBehaviour
 		if (collision.gameObject.GetComponent<Cooking>() != null) {
             inCookingArea = true;
         }
-        else if (collision.gameObject.GetComponent<Plant>() == null) {
+        else if (collision.gameObject.GetComponent<Plant>() == null && collision.gameObject.GetComponent<Item>() != null) {
 			nutritionLabel.SetActive(true);
+
+			Slider[] sliders = nutritionLabel.GetComponentsInChildren<Slider>();
+			int[] nutritionInfo = collision.gameObject.GetComponent<Item>().getNutritionInfo();
+
+			for(int i = 0; i < nutritionInfo.Length; i++) {
+				sliders[i].value = nutritionInfo[i];
+			}
+
+
+
+
 			if (Input.GetKey("p")) {
 				inventory.GetComponent<Inventory>().pickupItem(collision.gameObject);
 				nutritionLabel.SetActive(false);
@@ -175,6 +188,12 @@ public class Character : MonoBehaviour
 		}
 		
     }
+
+	void OnTriggerExit(Collider collision) {
+		if (collision.gameObject.GetComponent<Plant>() == null && collision.gameObject.GetComponent<Item>() != null) {
+			nutritionLabel.SetActive(false);
+		}
+	}
 
     
 }
