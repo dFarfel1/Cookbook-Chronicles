@@ -160,10 +160,15 @@ public class Character : MonoBehaviour
 
     void OnTriggerStay(Collider collision)
     {
+
+		if (collision.gameObject.GetComponent<I_OnHit>() != null && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("swing")) {
+			collision.gameObject.GetComponent<I_OnHit>().onHit();
+		}
+
 		if (collision.gameObject.GetComponent<Cooking>() != null) {
             inCookingArea = true;
         }
-        else if (collision.gameObject.GetComponent<Plant>() == null && collision.gameObject.GetComponent<Item>() != null) {
+		else if (collision.gameObject.GetComponent<Plant>() == null && collision.gameObject.GetComponent<Item>() != null) {
 			nutritionLabel.SetActive(true);
 
 			nutriotionLabelTitle.text = collision.gameObject.GetComponent<Item>().getName();
@@ -192,9 +197,8 @@ public class Character : MonoBehaviour
 					health--;
 				}
 			}
-			if (collision.gameObject.GetComponent<I_OnHit>() != null && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("swing")) {
-				collision.gameObject.GetComponent<I_OnHit>().onHit();
-			} 
+
+			
 
 			
 		}

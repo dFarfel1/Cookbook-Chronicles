@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -861,7 +861,7 @@ MonoBehaviour:
   fiber: 0
   calories: 0
   isPoisoned: 0
-  name: 
+  name: PumpkinSoup
 --- !u!65 &78409660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1354,12 +1354,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: b647107ff66b8bd4787febbc4df14f1d, type: 3}
-  protein: 0
-  carbs: 0
-  fiber: 0
-  calories: 0
+  protein: 30
+  carbs: 50
+  fiber: 10
+  calories: 100
   isPoisoned: 0
-  name: 
+  name: Eggplant
 --- !u!1001 &145589994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2483,12 +2483,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 9e46bd379f96e354bb39c9be3a60f41a, type: 3}
-  protein: 0
-  carbs: 0
-  fiber: 0
-  calories: 0
+  protein: 10
+  carbs: 100
+  fiber: 100
+  calories: 100
   isPoisoned: 0
-  name: 
+  name: Corn
 --- !u!1 &323002228 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2834595618098478615, guid: d1e3a6c529e9c4ecc9260a8dcbc4e6bc, type: 3}
@@ -6681,12 +6681,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: a6c85769d6900c34b9bf1284deeec146, type: 3}
-  protein: 0
-  carbs: 0
-  fiber: 0
-  calories: 0
+  protein: 100
+  carbs: 10
+  fiber: 37
+  calories: 500
   isPoisoned: 0
-  name: 
+  name: RedApple
 --- !u!135 &783795112
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6891,12 +6891,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: a757341924aaaf646b02bc33237c8c55, type: 3}
-  protein: 0
-  carbs: 0
-  fiber: 0
-  calories: 0
+  protein: 10
+  carbs: 10
+  fiber: 10
+  calories: 100
   isPoisoned: 0
-  name: 
+  name: Drumstick
 --- !u!1 &791788566
 GameObject:
   m_ObjectHideFlags: 0
@@ -9020,12 +9020,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: b42753e5fe41e254cbe6e04d3e0ac1ab, type: 3}
-  protein: 0
-  carbs: 0
-  fiber: 0
-  calories: 0
+  protein: 10
+  carbs: 50
+  fiber: 10
+  calories: 500
   isPoisoned: 0
-  name: 
+  name: Pumpkin
 --- !u!1 &979322213
 GameObject:
   m_ObjectHideFlags: 0
@@ -11350,12 +11350,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  protein: 0
+  protein: 100
   carbs: 0
   fiber: 0
-  calories: 0
+  calories: 1000
   isPoisoned: 0
-  name: 
+  name: Chicken
 --- !u!1 &1218840696
 GameObject:
   m_ObjectHideFlags: 0
@@ -12313,12 +12313,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: fa25c1f8de388ab41938335525d6903d, type: 3}
-  protein: 0
-  carbs: 0
-  fiber: 0
-  calories: 0
-  isPoisoned: 0
-  name: 
+  protein: 1
+  carbs: 10
+  fiber: 10
+  calories: 100
+  isPoisoned: 1
+  name: onion
 --- !u!135 &1340181267
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18680,12 +18680,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: ba0e74ef6347e9e419afcaf50bc7dcf5, type: 3}
-  protein: 0
-  carbs: 0
-  fiber: 0
-  calories: 0
-  isPoisoned: 0
-  name: 
+  protein: 50
+  carbs: 50
+  fiber: 50
+  calories: 50
+  isPoisoned: 1
+  name: GreenApple
 --- !u!135 &2043437603
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -19512,7 +19512,6 @@ MonoBehaviour:
   instructions: {fileID: 2108112314}
   mistake: {fileID: 1480134483}
   pickUpArea: {fileID: 0}
-  text: {fileID: 0}
 --- !u!1 &2123675851
 GameObject:
   m_ObjectHideFlags: 0

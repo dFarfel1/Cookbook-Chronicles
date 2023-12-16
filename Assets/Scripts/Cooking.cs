@@ -17,7 +17,7 @@ public class Cooking : MonoBehaviour
     public GameObject mistake; 
     public GameObject pickUpArea;
 
-    public TextMeshProUGUI text;
+    //public TextMeshProUGUI text;
     
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,7 @@ public class Cooking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Level: " + GetComponent<Character>().curLevel(4);
+        //text.text = "Level: " + GetComponent<Character>().curLevel(4);
     }
 
 	void OnTriggerEnter(Collider collision){
