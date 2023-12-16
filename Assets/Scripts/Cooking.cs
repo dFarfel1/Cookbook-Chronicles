@@ -14,6 +14,7 @@ public class Cooking : MonoBehaviour
     public GameObject[] cookedItems;
     public GameObject instructions;
     public GameObject mistake; 
+    public GameObject pickUpArea;
     
     // Start is called before the first frame update
     void Start()
@@ -30,8 +31,6 @@ public class Cooking : MonoBehaviour
         {
             cookingValues[ingredientsList[i/2]] = pow2(i);
         }
-
-        
 
     }
 
@@ -99,11 +98,11 @@ public class Cooking : MonoBehaviour
 		}
 
         // successful
-        Debug.Log(value);
-        if(value == 6){
-            
+        //Debug.Log(value);
+        if(value == 6 ||value ==48||value == 1728 ||value == 41989){
+            pickUpArea.GetComponent<Character>().levelUp();
         }
-
+   
 		if (recipes.ContainsKey(value)) {
             Debug.Log("Recipe Made");
             GameObject.Instantiate(recipes[value], position, Quaternion.identity).SetActive(true);
@@ -111,7 +110,6 @@ public class Cooking : MonoBehaviour
         else {
 			GameObject.Instantiate(mistake, position, Quaternion.identity).SetActive(true);
 		}
-
         clear();
 	}
 
