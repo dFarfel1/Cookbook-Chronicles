@@ -1153,6 +1153,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 64000014021002932, guid: 92417dd2b68fd6147a711fb2af4275b1, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64000014021002932, guid: 92417dd2b68fd6147a711fb2af4275b1, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2026,6 +2034,10 @@ PrefabInstance:
     - target: {fileID: 4000010845709248, guid: 8490d29919917de4ca0c5297d93090d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64000013077887286, guid: 8490d29919917de4ca0c5297d93090d7, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3764,6 +3776,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Corn_Plant
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012235373026, guid: 1c8776a0b36cd9a4f813bf0d2d59d109, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013164392252, guid: 1c8776a0b36cd9a4f813bf0d2d59d109, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1333895
@@ -5317,6 +5333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pumpkin_Plant
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010824186820, guid: 30319199574ca3644bf3898bb5cac486, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011223534310, guid: 30319199574ca3644bf3898bb5cac486, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.58714
@@ -5660,15 +5680,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464589270626554627, guid: 273b0a646bf4f410c898f350686cf95d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01
+      value: 3.44
       objectReference: {fileID: 0}
     - target: {fileID: 4464589270626554627, guid: 273b0a646bf4f410c898f350686cf95d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000047683716
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: 4464589270626554627, guid: 273b0a646bf4f410c898f350686cf95d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.01
+      value: 0.91
       objectReference: {fileID: 0}
     - target: {fileID: 4464589270626554627, guid: 273b0a646bf4f410c898f350686cf95d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5705,6 +5725,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3944793617797155257, guid: 273b0a646bf4f410c898f350686cf95d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 783795110}
+    - targetCorrespondingSourceObject: {fileID: 3944793617797155257, guid: 273b0a646bf4f410c898f350686cf95d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 783795112}
   m_SourcePrefab: {fileID: 100100000, guid: 273b0a646bf4f410c898f350686cf95d, type: 3}
 --- !u!1 &783795109 stripped
 GameObject:
@@ -5724,6 +5747,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: a6c85769d6900c34b9bf1284deeec146, type: 3}
+--- !u!135 &783795112
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783795109}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &786291199
 GameObject:
   m_ObjectHideFlags: 0
@@ -8611,6 +8655,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turnip_Plant
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010164499024, guid: f0666abddd74e5644ac4cf977d74e5e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011416873294, guid: f0666abddd74e5644ac4cf977d74e5e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.3175392
@@ -9369,6 +9417,10 @@ PrefabInstance:
     - target: {fileID: 1000013410243764, guid: 56b36da289d9a9e4cb37c5f588e23748, type: 3}
       propertyPath: m_Name
       value: Carrot_Plant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013410243764, guid: 56b36da289d9a9e4cb37c5f588e23748, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000010095355520, guid: 56b36da289d9a9e4cb37c5f588e23748, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10183,15 +10235,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4792816084299738843, guid: 6ad77e349a0cc4654a38708787ae1eff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.0056038
+      value: 3.55
       objectReference: {fileID: 0}
     - target: {fileID: 4792816084299738843, guid: 6ad77e349a0cc4654a38708787ae1eff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000047683716
+      value: 2.317
       objectReference: {fileID: 0}
     - target: {fileID: 4792816084299738843, guid: 6ad77e349a0cc4654a38708787ae1eff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1748724
+      value: 3.887
       objectReference: {fileID: 0}
     - target: {fileID: 4792816084299738843, guid: 6ad77e349a0cc4654a38708787ae1eff, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10236,6 +10288,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5316587841953117281, guid: 6ad77e349a0cc4654a38708787ae1eff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1340181265}
+    - targetCorrespondingSourceObject: {fileID: 5316587841953117281, guid: 6ad77e349a0cc4654a38708787ae1eff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1340181267}
   m_SourcePrefab: {fileID: 100100000, guid: 6ad77e349a0cc4654a38708787ae1eff, type: 3}
 --- !u!1 &1340181264 stripped
 GameObject:
@@ -10255,6 +10310,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: fa25c1f8de388ab41938335525d6903d, type: 3}
+--- !u!135 &1340181267
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340181264}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1363052961
 GameObject:
   m_ObjectHideFlags: 0
@@ -12373,6 +12449,10 @@ PrefabInstance:
     - target: {fileID: 1000012171661116, guid: 97c7589824dbbb24cbc2b95a9345ebb1, type: 3}
       propertyPath: m_Name
       value: Eggplant_Plant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012171661116, guid: 97c7589824dbbb24cbc2b95a9345ebb1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000012227641834, guid: 97c7589824dbbb24cbc2b95a9345ebb1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15447,7 +15527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5416670838019810679, guid: cfdb452e7316b42e894aa2cb2179004f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.45501328
+      value: 3.76
       objectReference: {fileID: 0}
     - target: {fileID: 5416670838019810679, guid: cfdb452e7316b42e894aa2cb2179004f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15492,6 +15572,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4638762322126651341, guid: cfdb452e7316b42e894aa2cb2179004f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2043437601}
+    - targetCorrespondingSourceObject: {fileID: 4638762322126651341, guid: cfdb452e7316b42e894aa2cb2179004f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2043437603}
   m_SourcePrefab: {fileID: 100100000, guid: cfdb452e7316b42e894aa2cb2179004f, type: 3}
 --- !u!1 &2043437600 stripped
 GameObject:
@@ -15511,6 +15594,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: ba0e74ef6347e9e419afcaf50bc7dcf5, type: 3}
+--- !u!135 &2043437603
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043437600}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2051546898
 GameObject:
   m_ObjectHideFlags: 0
@@ -16291,19 +16395,19 @@ SceneRoots:
   - {fileID: 2054772850}
   - {fileID: 560675241}
   - {fileID: 494129304}
+  - {fileID: 1340181263}
+  - {fileID: 322474640}
+  - {fileID: 783795108}
+  - {fileID: 2043437599}
+  - {fileID: 143115159}
+  - {fileID: 964712834}
   - {fileID: 145589994}
   - {fileID: 987371477}
   - {fileID: 1449998206}
   - {fileID: 1480134487}
   - {fileID: 1639993321}
   - {fileID: 2114975109}
-  - {fileID: 783795108}
-  - {fileID: 2043437599}
-  - {fileID: 1340181263}
   - {fileID: 1947635782}
-  - {fileID: 322474640}
-  - {fileID: 143115159}
-  - {fileID: 964712834}
   - {fileID: 2005010808}
   - {fileID: 617086067}
   - {fileID: 1667910558}
