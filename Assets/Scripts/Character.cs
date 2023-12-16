@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
     private GameObject inventory;
     private bool inventoryOpen;
     private bool inCookingArea;
-
+	
     public Slider hunger; 
     public int health;
 	public int numOfHearts;

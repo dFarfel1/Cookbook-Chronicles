@@ -12,6 +12,7 @@ public class CameraControl : MonoBehaviour
         private float verticalSensitivity = -0.5f;
         private float leftRightRotation;
         private float cameraTerrainHeightAdjustment = 0.0f;
+        public GameObject pickUpArea;
 
 
 
@@ -22,8 +23,9 @@ public class CameraControl : MonoBehaviour
         //bool
         bool doNothing2 = pauseMenuScript.isGamePaused();
         bool doNothing3 = bookCanvas.active;
+        bool doNothing4 = pickUpArea.GetComponent<Character>().isGameOver();
 
-        if (doNothing || doNothing2 || doNothing3) {
+        if (doNothing || doNothing2 || doNothing3 ||doNothing4) {
             return;
         }
         
