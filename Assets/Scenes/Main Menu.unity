@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -526,10 +526,11 @@ MonoBehaviour:
   m_text: "Cookbook Chronicles!\n\nYour goal is to complete the cookbook before you
     die of hunger or monsters.\nYou can interact with the environment to collect
     materials for the cooking.\nCombine items in the white cooking area, then submit
-    the dishes in the order \ninstructed by the cookbook to the submission area.\n\nTo
-    move, use WASD\nTo attack, left click with the mouse\nTo pickup, use P\nTo see
-    the book, use TAB\nTo pause the game, use ESCAPE\nTo open the inventory, use
-    B\nTo drop something, select it first and use L\n\nHappy Cooking!\n\n"
+    the dishes in the order \ninstructed by the cookbook by clicking cook\n\nTo move,
+    use WASD\nTo attack, left click with the mouse\nTo pickup, use P\nTo see the
+    book, use TAB\nTo pause the game, use ESCAPE\nTo open the inventory, use B\nTo
+    drop something, select it first and use L\nTo eat something, use E\n\nEat something
+    before you lose health!\nHappy Cooking!\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
