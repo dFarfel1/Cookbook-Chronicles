@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
 	public Sprite emptyHeart;
 
 	public bool gameOver;
+	public bool gameWon;
 
     private int time;
     public Animator playerAnimator;
@@ -24,16 +25,21 @@ public class Character : MonoBehaviour
     public GameObject pauseCanvas;
 	public GameObject playAgainCanvas;
 
+	public bool[] levels;
+
     void Start()
     {
+		//levels system
+		levels = new bool[] {false,false,false,false,false};
+
         inventory = GameObject.Find("Inventory");
         health = 3;
         time = 10000;
 		gameOver = false;
+		gameWon = false;
 
 		inventory.GetComponent<Canvas>().enabled = false;
 		inventoryOpen = false;
-
     }
 
     void Update()
@@ -91,9 +97,6 @@ public class Character : MonoBehaviour
 
 		}
 
-
-
-
 	}
 
 	//returns gameOver status if needed by other scripts
@@ -101,8 +104,54 @@ public class Character : MonoBehaviour
 		return gameOver;
 	}
 
+    //checks if game is won
+	public bool isGameWon(int num){
+		bool result = levels[0];
+		for(int i = 1; i<num; i++){
+			result = result && levels[i];
+		}
+		if(result){
+			gameWon = true;
+		}
+		return result;
+	}
+
+	//helper function for levelingUp
+	public void levelUp(){
+		int index = -1;
+		for(int i = 0; i<levels.Length; i++){
+			if(levels[i] == true){
+				continue;
+			}
+			else{
+				index = i;
+				break;
+			}
+		}
+		if(index!= -1){
+			levels[index] = true;
+		}
+	}
+
+	public int curLevel(int max){
+		int result = 0;
+		for(int i=0;i<max; i++){
+			if(levels[i]){
+				result ++;
+			}
+		}
+		return result;
+	}
+
+	//set game over boolean
 	public void setGameOver(bool condition){
 		gameOver = condition;
+	}
+
+	//setter for game won
+	public void setGameWon(bool condition){
+		gameWon = condition;
+
 	}
 
     void OnTriggerStay(Collider collision)
