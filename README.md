@@ -17,11 +17,14 @@ To attack, left-click with the mouse
 
 To pick up, use P
 
+To eat, use E
+
 To see the book, use TAB
 
 To pause the game, use ESCAPE
 
 To open the inventory, use B
+
 
 To drop something, select it first and use L
 
